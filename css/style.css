@@ -30,24 +30,108 @@ body {
     float: left;
     width: 35%;
     height: 100%;
-    min-width: 300px;
 }
 
 .user {
-    height: 10%;
+    height: 8%;
+    background-color: #EAEAEA;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.user-left {
+    display: flex;
+    align-items: center;
+}
+
+.user-left img {
+    width: 12%;
+    border-radius: 100%;
+}
+
+.user-left span {
+    margin-left: 15px;
+    font-weight: 600;
+}
+
+.user-right {
+    display: flex;
+    justify-content: space-around;
+}
+
+.user-right .fas {
+    font-size: 20px;
+    color: gray;
+    margin: 0 10px 0 10px
 }
 
 .notification{
+    display: flex;
+    align-items: center;
     height: 10%;
+    background-color: #8EDAFC;
+}
+
+.notification .bell {
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 11%;
+    height: 69%;
+    border-radius: 100%;
+    margin-left: 10px;
+    background-color: white;
+    color: #8EDAFC;
+    font-size: 20px;
+}
+
+.notification .bell-text {
+    margin-left: 20px;
+}
+
+.notification > div.bell-text > p:nth-child(1) {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.notification > div.bell-text > p:nth-child(2) {
+    font-size: 13px;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .search {
     height: 5%;
+    background-color: #EAEAEA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search input[type=search] {
+    width: 87%;
+    height: 70%;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+}
+
+.search button {
+    height: 70%;
+    width: 10%;
+    border: none;
+    border-right: 1px solid #EAEAEA;
+    background-color: white;
+    color: gray;
 }
 
 .list {
-    height: 75%;
+    height: 77%;
     overflow-y: scroll;
+    background-color: white;
 }
 
 .main {
@@ -57,11 +141,11 @@ body {
 }
 
 .contact {
-    height: 10%;
+    height: 8%;
 }
 
 .text-space {
-    height: 80%;
+    height: 82%;
     background-image: url(/img/mine.jpg);
     overflow-y: scroll;
 }
