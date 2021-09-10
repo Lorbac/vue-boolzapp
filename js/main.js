@@ -2,7 +2,7 @@ Vue.config.devtools = true;
 
 const app = new Vue ({
     el: "#root",
-    data : {
+    data: {
         contacts: [
             {
                 name: 'Michele',
@@ -89,4 +89,10 @@ const app = new Vue ({
             },
         ],
     },
+    methods: {
+        getImage(contact) {
+            return 'img/avatar' + contact.avatar + '.jpg';
+        }
+    }
+    
 })
