@@ -111,6 +111,12 @@ const app = new Vue ({
                 });
                 this.newMessage= "";
             }
+            setTimeout(() => {
+                this.contacts[this.userIndex].messages.push ({
+                date: new Date().toLocaleString(),
+                message: "Ok",
+                status: 'received'
+            })}, 3000);
         }
     }
     

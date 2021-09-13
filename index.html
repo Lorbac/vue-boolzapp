@@ -76,7 +76,7 @@
                             <i class="far fa-smile"></i>
                         </div>
                         <div class="message">
-                            <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyUp.enter="sentMessage">
+                            <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyUp.enter="sentMessage" @keyDown.enter="setTimeout">
                         </div>
                         <div class="vocal">
                             <i class="fas fa-microphone"></i>
