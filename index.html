@@ -44,7 +44,7 @@
                     </div>
                     <div class="list w-100">
                         <ul>
-                            <li v-for="(contact) in contacts">
+                            <li v-for="(contact, index) in contacts" @click="chooseChat(index)" :class="(index == userIndex) ? 'active' : null">
                                 <img :src="getImage(contact)" alt="Immagine contatto">
                                 <span>{{contact.name}}</span>
                             </li>
@@ -54,9 +54,9 @@
                 <div class="main">
                     <div class="contact-access w-100">
                         <div class="left-side">
-                            <img src="img/avatar_2.jpg" alt="">
+                            <img :src="getImage(contacts[userIndex])" alt="">
                             <div class="text-access">
-                                <p>Michele</p>
+                                <p>{{ contacts[userIndex].name }}</p>
                                 <p>Ultimo accesso alle</p>
                             </div>
                         </div>
@@ -67,10 +67,13 @@
                         </div>
                     </div>
                     <div class="text-space w-100">
-                       <div class="chat-left ">
-                            <div class="mess mess-left white-bg">
+                        <div :class="(text.status == 'sent') ? 'sent' : 'received'" v-for="(text) in contacts[userIndex].messages">
+                            {{text.message}}
+                        </div>
+                       <!-- <div class="chat-left">
+                            <div v-for="(message) in contacts[userIndex].messages" class="mess mess-left white-bg">
                                 <p>
-                                    Lorem ipsum. Illo nesciunt natus, ipsum saepe omnis a placeat praesentium reiciendis inventore cumque labore beatae dolores eum.
+                                    {{message.message}}
                                 </p>
                                 <span class="check">
                                     ultimo accesso
@@ -82,13 +85,13 @@
                         <div class="space"></div>
                         <div class="mess mess-right green-bg">
                             <p>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo nesciunt natus, ipsum saepe omnis a placeat praesentium reiciendis inventore cumque labore beatae dolores eum. Iusto soluta dolores hic nisi eveniet!
+                               Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium odit provident perspiciatis officiis eveniet quaerat explicabo dolorum inventore, ducimus quia expedita necessitatibus eum placeat voluptatum voluptates ab, doloribus praesentium ipsa.
                             </p>
                             <span class="check">
                                 ultimo accesso
                             </span>
-                        </div>
-                       </div>
+                        </div> -->
+                       
                     </div>
                     <div class="my-message w-100">
                         <div class="emoticon">

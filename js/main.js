@@ -88,11 +88,18 @@ const app = new Vue ({
                 ],
             },
         ],
+        userIndex: 0,
+        // selectedContact: null,
     },
     methods: {
         getImage(contact) {
             return 'img/avatar' + contact.avatar + '.jpg';
-        }
+        },
+        chooseChat (userIndex) {
+            console.log(userIndex);
+            this.userIndex = userIndex;
+            // this.selectedContact = contact;
+        },
     }
     
 })
