@@ -90,6 +90,8 @@ const app = new Vue ({
         ],
         userIndex: 0,
         // selectedContact: null,
+        newMessage:"",
+        
     },
     methods: {
         getImage(contact) {
@@ -100,6 +102,16 @@ const app = new Vue ({
             this.userIndex = userIndex;
             // this.selectedContact = contact;
         },
+        sentMessage() {
+            if (this.newMessage != "") {
+                    this.contacts[this.userIndex].messages.push ({
+                    date: new Date().toLocaleString(),
+                    message: this.newMessage,
+                    status: 'sent'
+                });
+                this.newMessage= "";
+            }
+        }
     }
     
 })
