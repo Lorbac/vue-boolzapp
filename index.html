@@ -68,30 +68,8 @@
                     </div>
                     <div class="text-space w-100">
                         <div :class="(text.status == 'sent') ? 'sent' : 'received'" v-for="(text) in contacts[userIndex].messages">
-                            {{text.message}}
+                            {{text.message}} <p>{{text.date}}</p>
                         </div>
-                       <!-- <div class="chat-left">
-                            <div v-for="(message) in contacts[userIndex].messages" class="mess mess-left white-bg">
-                                <p>
-                                    {{message.message}}
-                                </p>
-                                <span class="check">
-                                    ultimo accesso
-                                </span>
-                            </div>
-                            <div class="space"></div>
-                       </div>
-                       <div class="chat-right ">
-                        <div class="space"></div>
-                        <div class="mess mess-right green-bg">
-                            <p>
-                               Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium odit provident perspiciatis officiis eveniet quaerat explicabo dolorum inventore, ducimus quia expedita necessitatibus eum placeat voluptatum voluptates ab, doloribus praesentium ipsa.
-                            </p>
-                            <span class="check">
-                                ultimo accesso
-                            </span>
-                        </div> -->
-                       
                     </div>
                     <div class="my-message w-100">
                         <div class="emoticon">
