@@ -61,9 +61,9 @@
                 <!-- Barra di navigazione con informazioni dell'utente selezionato nella lista -->
                     <div class="contact-access w-100">
                         <div class="left-side">
-                            <img :src="getImage(contacts[userIndex])" alt="">
+                            <img :src="getImage(filterContact[userIndex])" alt="">
                             <div class="text-access">
-                                <p>{{ contacts[userIndex].name }}</p>
+                                <p>{{ filterContact[userIndex].name }}</p>
                                 <p>Ultimo accesso alle</p>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                     </div>
                 <!-- Area dedicata ai messaggi inviati/ricevuti -->
                     <div class="text-space w-100">
-                        <div :class="(text.status == 'sent') ? 'sent' : 'received'" v-for="(text) in contacts[userIndex].messages">
+                        <div :class="(text.status == 'sent') ? 'sent' : 'received'" v-for="(text) in filterContact[userIndex].messages">
                             {{text.message}} <p>{{text.date}}</p>
                         </div>
                     </div>

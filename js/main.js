@@ -129,10 +129,8 @@ const app = new Vue ({
                 return this.contacts.filter((contact) => {
                     return this.search.toLowerCase().split(" ").every(v => contact.name.toLowerCase().includes(v))
                 })
-            }
-            else {
-                return this.contacts;
-            }
+            } 
+            return this.contacts;
         }
     }
 })
