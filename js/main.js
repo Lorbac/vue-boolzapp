@@ -122,11 +122,17 @@ const app = new Vue ({
                 status: 'received'
             })}, 1000);
         },
-        computed: {
-            filterContact() {
-                
+    },
+    computed: {
+        filterContact:function() {
+            if(this.search){
+                return this.contacts.filter((contact) => {
+                    return this.search.toLowerCase().split(" ").every(v => contact.name.toLowerCase().includes(v))
+                })
+            }
+            else {
+                return this.contacts;
             }
         }
     }
-    
 })

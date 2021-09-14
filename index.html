@@ -50,7 +50,7 @@
                 <!-- Lista delle chat -->
                     <div class="list w-100">
                         <ul>
-                            <li v-for="(contact, index) in contacts" @click="chooseChat(index)" :class="(index == userIndex) ? 'active' : null">
+                            <li v-for="(contact, index) in filterContact" @click="chooseChat(index)" :class="(index == userIndex) ? 'active' : null">
                                 <img :src="getImage(contact)" alt="Immagine contatto">
                                 <span>{{contact.name}}</span>
                             </li>
