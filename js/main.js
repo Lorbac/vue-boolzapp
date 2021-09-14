@@ -91,6 +91,7 @@ const app = new Vue ({
         userIndex: 0,
         // selectedContact: null,
         newMessage:"",
+        search: "",
         
     },
     methods: {
@@ -102,10 +103,12 @@ const app = new Vue ({
             this.userIndex = userIndex;
             // this.selectedContact = contact;
         },
-        sentMessage() {
+        sendMessage() {
+            let tmp = dayjs().format("DD/MM/YYYY hh:mm:ss");
             if (this.newMessage != "") {
                     this.contacts[this.userIndex].messages.push ({
-                    date: new Date().toLocaleString(),
+                    // date: new Date().toLocaleString(),
+                    date: tmp,
                     message: this.newMessage,
                     status: 'sent'
                 });
@@ -113,10 +116,16 @@ const app = new Vue ({
             }
             setTimeout(() => {
                 this.contacts[this.userIndex].messages.push ({
-                date: new Date().toLocaleString(),
+                // date: new Date().toLocaleString(),
+                date: tmp,
                 message: "Ok",
                 status: 'received'
-            })}, 3000);
+            })}, 1000);
+        },
+        computed: {
+            filterContact() {
+                
+            }
         }
     }
     

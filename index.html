@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- LINK CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- CDN PER LA DATA -->
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <title>BoolZapp</title>
 </head>
 <body>
@@ -17,6 +19,7 @@
     <div id="root">
         <div class="background w-100">
             <div class="container">
+                <!-- Barra di navigazione del possessore dell'account -->
                 <div class="navbar">
                     <div class="user w-100">
                         <div class="user-left">
@@ -29,6 +32,7 @@
                             <i class="fas fa-ellipsis-v"></i>
                         </div>
                     </div>
+                <!-- Area dedicata all'attivazione/disattivazione delle notifiche -->
                     <div class="notification w-100">
                         <div class="bell">
                             <i class="fas fa-bell-slash"></i>
@@ -38,10 +42,12 @@
                             <p>Attiva notifiche desktop</p>
                         </div>
                     </div>
+                <!-- Area dedicata alla ricerca delle chat -->
                     <div class="search w-100">
                         <button><i class="fas fa-search"></i></button>
-                        <input type="search" placeholder="Cerca o inizia una nuova chat">
+                        <input type="text" v-model="search" placeholder="Cerca o inizia una nuova chat">
                     </div>
+                <!-- Lista delle chat -->
                     <div class="list w-100">
                         <ul>
                             <li v-for="(contact, index) in contacts" @click="chooseChat(index)" :class="(index == userIndex) ? 'active' : null">
@@ -52,6 +58,7 @@
                     </div>
                 </div>
                 <div class="main">
+                <!-- Barra di navigazione con informazioni dell'utente selezionato nella lista -->
                     <div class="contact-access w-100">
                         <div class="left-side">
                             <img :src="getImage(contacts[userIndex])" alt="">
@@ -66,17 +73,19 @@
                             <i class="fas fa-ellipsis-v"></i>
                         </div>
                     </div>
+                <!-- Area dedicata ai messaggi inviati/ricevuti -->
                     <div class="text-space w-100">
                         <div :class="(text.status == 'sent') ? 'sent' : 'received'" v-for="(text) in contacts[userIndex].messages">
                             {{text.message}} <p>{{text.date}}</p>
                         </div>
                     </div>
+                <!-- Area dedicata alla scrittura e invio del messaggio del possessore dell'account -->
                     <div class="my-message w-100">
                         <div class="emoticon">
                             <i class="far fa-smile"></i>
                         </div>
                         <div class="message">
-                            <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyUp.enter="sentMessage" @keyDown.enter="setTimeout">
+                            <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyUp.enter="sendMessage">
                         </div>
                         <div class="vocal">
                             <i class="fas fa-microphone"></i>
