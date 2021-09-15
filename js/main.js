@@ -104,9 +104,10 @@ const app = new Vue ({
             // this.selectedContact = contact;
         },
         sendMessage() {
+            let thisContact = this.contacts[this.userIndex]
             let tmp = dayjs().format("DD/MM/YYYY hh:mm:ss");
             if (this.newMessage != "") {
-                    this.contacts[this.userIndex].messages.push ({
+                thisContact.messages.push ({
                     // date: new Date().toLocaleString(),
                     date: tmp,
                     message: this.newMessage,
@@ -115,7 +116,7 @@ const app = new Vue ({
                 this.newMessage= "";
             }
             setTimeout(() => {
-                this.contacts[this.userIndex].messages.push ({
+                thisContact.messages.push ({
                 // date: new Date().toLocaleString(),
                 date: tmp,
                 message: "Ok",
@@ -124,7 +125,7 @@ const app = new Vue ({
         },
     },
     computed: {
-        filterContact:function() {
+        filterContact: function() {
             if(this.search){
                 return this.contacts.filter((contact) => {
                     return this.search.toLowerCase().split(" ").every(v => contact.name.toLowerCase().includes(v))
