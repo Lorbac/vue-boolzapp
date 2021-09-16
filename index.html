@@ -45,12 +45,12 @@
                 <!-- Area dedicata alla ricerca delle chat -->
                     <div class="search w-100">
                         <button><i class="fas fa-search"></i></button>
-                        <input type="text" v-model="search" placeholder="Cerca o inizia una nuova chat">
+                        <input type="text" v-model="search" @keyup="filterContacts" placeholder="Cerca o inizia una nuova chat">
                     </div>
                 <!-- Lista delle chat -->
                     <div class="list w-100">
                         <ul>
-                            <li v-for="(contact, index) in filterContact" @click="chooseChat(index)" :class="(index == userIndex) ? 'active' : null">
+                            <li v-for="(contact, index) in filterContacts()" @click="chooseChat(index)" :class="(index == userIndex) ? 'active' : null">
                                 <img :src="getImage(contact)" alt="Immagine contatto">
                                 <span>{{contact.name}}</span>
                             </li>
@@ -61,9 +61,9 @@
                 <!-- Barra di navigazione con informazioni dell'utente selezionato nella lista -->
                     <div class="contact-access w-100">
                         <div class="left-side">
-                            <img :src="getImage(filterContact[userIndex])" alt="">
+                            <img :src="getImage(contacts[userIndex])" alt="">
                             <div class="text-access">
-                                <p>{{ filterContact[userIndex].name }}</p>
+                                <p>{{ contacts[userIndex].name }}</p>
                                 <p>Ultimo accesso alle</p>
                             </div>
                         </div>
@@ -75,8 +75,15 @@
                     </div>
                 <!-- Area dedicata ai messaggi inviati/ricevuti -->
                     <div class="text-space w-100">
-                        <div :class="(text.status == 'sent') ? 'sent' : 'received'" v-for="(text) in filterContact[userIndex].messages">
+                        <div :class="(text.status == 'sent') ? 'sent' : 'received'" v-for="(text, index) in contacts[userIndex].messages">
                             {{text.message}} <p>{{text.date}}</p>
+                            <i class="fas fa-chevron-down" @click="chooseMessage(index)"></i>
+                            <div class="dropdown" v-show="(messageIndex == index)">
+                                <ul>
+                                    <li>Informazioni messaggio</li>
+                                    <li>Cancella messaggio</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 <!-- Area dedicata alla scrittura e invio del messaggio del possessore dell'account -->

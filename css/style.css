@@ -210,7 +210,20 @@ body {
     height: 84%;
     background-image: url(/img/mine.jpg);
     overflow-y: scroll;
-    padding: 35px;
+    padding: 30px;
+}
+
+.text-space > div > .fas {
+    color: rgb(51, 51, 51);
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: none;
+}
+
+.text-space > div:hover .fas {
+    display: block;
 }
 
 .sent {
@@ -224,11 +237,35 @@ body {
 }
 
 .sent, .received {
+    position: relative;
     max-width: 300px;
-    padding: 10px;
+    padding: 15px;
     border-radius: 10px;
     margin: 10px;
     float: right;
+}
+
+.text-space .dropdown {
+    z-index: 9999;
+    position: absolute;
+    right: 10px;
+    width: 180px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    
+}
+
+/* .text-space .fas .dropdown.toogled {
+    display: block;
+} */
+
+.text-space ul {
+    list-style: none;
+}
+
+.text-space ul li {
+    padding: 10px;
 }
 
 .text-space p {

@@ -88,10 +88,11 @@ const app = new Vue ({
                 ],
             },
         ],
+        messageIndex: null,
         userIndex: 0,
-        // selectedContact: null,
         newMessage:"",
         search: "",
+        // isActive: false,
         
     },
     methods: {
@@ -99,12 +100,17 @@ const app = new Vue ({
             return 'img/avatar' + contact.avatar + '.jpg';
         },
         chooseChat (userIndex) {
-            console.log(userIndex);
             this.userIndex = userIndex;
-            // this.selectedContact = contact;
+        },
+        chooseMessage(index) {
+            // this.isActive = !this.isActive;
+            if (this.messageIndex == null) {
+                this.messageIndex = index;  
+            }
+            this.messageIndex = null;
         },
         sendMessage() {
-            let thisContact = this.contacts[this.userIndex]
+            let thisContact = this.contacts[this.userIndex];
             let tmp = dayjs().format("DD/MM/YYYY hh:mm:ss");
             if (this.newMessage != "") {
                 thisContact.messages.push ({
@@ -123,15 +129,10 @@ const app = new Vue ({
                 status: 'received'
             })}, 1000);
         },
-    },
-    computed: {
-        filterContact: function() {
-            if(this.search){
-                return this.contacts.filter((contact) => {
-                    return this.search.toLowerCase().split(" ").every(v => contact.name.toLowerCase().includes(v))
-                })
-            } 
-            return this.contacts;
-        }
+        filterContacts() {
+            return this.contacts.filter((contact) => {
+                return contact.name.toLowerCase().includes(this.search.toLowerCase());
+            });
+        }    
     }
 })
